@@ -3,6 +3,16 @@ function Pokemon(type, master) {
     this.master = master;
 }
 
+function Pikachu(master) {
+    Pokemon.call(this, "Pikachu", master);
+}
+
+Pikachu.prototype = Object.create(Pokemon.prototype);
+
+Pikachu.prototype.talk = function() {
+    console.log("Pika, pika !");
+}
+
 Pokemon.prototype.talk = function() {
     console.log(this.type.substr(0, 4));
 };
@@ -12,11 +22,11 @@ Pokemon.prototype.walk = function() {
 };
 
 
-const pikachu = new Pokemon("Pikachu", "Sacha");
+const pikachu = new Pikachu("Pikachu", "Sacha");
 pikachu.talk();
 pikachu.walk();
 
-const myPikachu = new Pokemon("Pikachu", "Jérémy");
+const myPikachu = new Pikachu("Jérémy");
 myPikachu.talk();
 myPikachu.walk();
 
